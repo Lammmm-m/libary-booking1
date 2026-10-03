@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Đặt phòng thư viện</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>Đặt phòng thư viện</h1>
+    <p>Chọn ngày, phòng và khung giờ còn trống.</p>
+  </div>
+  <button id="refreshBtn" class="secondary">↻ Cập nhật</button>
+</header>
+
+<main class="container">
+  <section class="notice">
+    <strong>Lưu ý:</strong> Bạn chỉ có thể đặt hôm nay hoặc ngày mai. Mỗi lượt tối đa 2 giờ.
+  </section>
+
+  <section class="controls card">
+    <div class="field">
+      <label for="dateSelect">Ngày sử dụng</label>
+      <select id="dateSelect"></select>
+    </div>
+    <div class="field">
+      <label for="roomSelect">Phòng</label>
+      <select id="roomSelect"></select>
+    </div>
+    <div class="field">
+      <label for="studentId">Mã sinh viên (MSSV)</label>
+      <input id="studentId" type="text" inputmode="numeric" placeholder="Nhập MSSV">
+    </div>
+  </section>
+
+  <section class="legend">
+    <span><i class="dot available"></i>Còn trống</span>
+    <span><i class="dot booked"></i>Đã đặt</span>
+    <span><i class="dot past"></i>Đã qua / không thể đặt</span>
+    <span class="muted">Bấm vào ô màu xanh để chọn giờ bắt đầu</span>
+  </section>
+
+  <section class="card">
+    <div class="room-head">
+      <div>
+        <h2 id="roomTitle">Phòng</h2>
+        <p id="roomHours"></p>
+      </div>
+      <span id="statusText" class="status">Đang tải...</span>
+    </div>
+
+    <div id="timeline" class="timeline"></div>
+  </section>
+
+  <section id="bookingPanel" class="card booking-panel hidden">
+    <h2>Xác nhận đặt phòng</h2>
+    <div class="summary">
+      <div><span>Ngày</span><strong id="sumDate"></strong></div>
+      <div><span>Phòng</span><strong id="sumRoom"></strong></div>
+      <div><span>Bắt đầu</span><strong id="sumStart"></strong></div>
+      <div><span>Kết thúc</span><strong id="sumEnd"></strong></div>
+      <div><span>MSSV</span><strong id="sumStudent"></strong></div>
+    </div>
+    <div class="field">
+      <label for="endSelect">Chọn giờ kết thúc</label>
+      <select id="endSelect"></select>
+    </div>
+    <div class="actions">
+      <button id="cancelBtn" class="secondary">Hủy</button>
+      <button id="bookBtn">Xác nhận đặt phòng</button>
+    </div>
+    <p id="bookingMessage" class="message"></p>
+  </section>
+
+  <section class="card">
+    <h2>Đặt phòng trong ngày</h2>
+    <div id="bookingList" class="booking-list"></div>
+  </section>
+</main>
+
+<footer>
+  <span>Library Booking V5</span>
+  <span id="lastUpdated"></span>
+</footer>
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
